@@ -1,7 +1,9 @@
 import { View, Text, Image, StyleSheet } from 'react-native';
 import React from 'react';
 import { Card } from 'native-base';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import moment from 'moment';
+import { Icon } from '@rneui/themed';
 
 interface CardViewProps {
   item: {

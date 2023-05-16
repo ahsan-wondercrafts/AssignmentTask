@@ -10,7 +10,7 @@ interface CustomTextInputProps extends IInputProps {
 
 const CustomTextInput: ForwardRefRenderFunction<typeof Input, CustomTextInputProps> = (
   { inputRef, placeholder, error, ...props },
-  
+  ref
 ) => {
   return (
     <>
@@ -23,7 +23,7 @@ const CustomTextInput: ForwardRefRenderFunction<typeof Input, CustomTextInputPro
         placeholderTextColor='#A7A7A7'
         autoCorrect={false}
       />
-      {error ? <Text style={{color:'red'}}>{error}</Text>: <Text> </Text>}
+      {error ? <Text style={{color:'red'}}>{error}</Text>: <Text></Text>}
     </>
   );
 };
