@@ -14,10 +14,7 @@ const Submit: React.FC<SubmitProps> = () => {
   const [nameError, setNameError] = useState<string | null>(null);
   const [commentError, setCommentError] = useState<string | null>(null);
   const [imageUrlError, setImageUrlError] = useState<string | null>(null);
-
   const nameRef = useRef<any>();
-  const commentRef = useRef<any>();
-  const imageUrlRef = useRef<any>();
 
   const [addCheckIn, { loading, error }] = useMutation(ADD_CHECK_IN);
   const { refetch } = useQuery(My_Query);
@@ -71,12 +68,11 @@ const Submit: React.FC<SubmitProps> = () => {
         });
         console.log(response.data);
         nameRef.current.clear();
-        commentRef.current.clear();
-        imageUrlRef.current.clear();
-        refetch();
-        setName('');
-        setComment('');
-        setImageUrl('');
+        refetch()
+        setName('')
+        setComment('')
+        setImageUrl('')
+
       } catch (error) {
         console.error(error);
       }
@@ -84,7 +80,7 @@ const Submit: React.FC<SubmitProps> = () => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView >
       <Container style={styles.MainViewStyle}>
         <Custom_TextInput
           inputRef={nameRef}
@@ -98,7 +94,6 @@ const Submit: React.FC<SubmitProps> = () => {
         />
 
         <Custom_TextInput
-          inputRef={commentRef}
           placeholder='Comment'
           onChangeText={(value) => {
             setComment(value);
@@ -109,7 +104,6 @@ const Submit: React.FC<SubmitProps> = () => {
         />
 
         <Custom_TextInput
-          inputRef={imageUrlRef}
           placeholder='ImageUrl'
           onChangeText={(value) => {
             setImageUrl(value);
@@ -118,6 +112,7 @@ const Submit: React.FC<SubmitProps> = () => {
           onBlur={validateImageUrl}
           error={imageUrlError}
         />
+
         <Button
           style={{
             backgroundColor: '#543cdc',
