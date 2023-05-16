@@ -23,7 +23,7 @@ const CustomTextInput: ForwardRefRenderFunction<typeof Input, CustomTextInputPro
         placeholderTextColor='#A7A7A7'
         autoCorrect={false}
       />
-      {error ? <Text style={{color:'red'}}>{error}</Text>: <Text></Text>}
+      {error ? <Text color={'red.600'} fontSize={11} py={1}>{error} </Text>: <Text></Text>}
     </>
   );
 };
@@ -32,7 +32,7 @@ export default forwardRef<typeof Input, CustomTextInputProps>(CustomTextInput);
 
 const styles = StyleSheet.create({
   textinput: {
-    width: '100%',
+    flex:1,
     backgroundColor: 'white',
     color: '#000',
   },

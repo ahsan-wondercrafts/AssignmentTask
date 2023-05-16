@@ -1,14 +1,15 @@
-import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
+import { Box, Text } from 'native-base';
+import { StyleSheet } from 'react-native';
 
 interface HandleErrorProps {
   error: Error | undefined;
 }
 
 const HandleError: React.FC<HandleErrorProps> = ({ error }) => (
-  <View style={styles.container}>
-    <Text style={styles.errorText}>{error?.message}</Text>
-  </View>
+  <Box style={styles.container}>
+    <Text  color={'red.600'} fontSize={20} >{error?.message}</Text>
+  </Box>
 );
 
 export default HandleError;
@@ -19,9 +20,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: '5%',
-  },
-  errorText: {
-    color: 'red',
-    fontSize: 20,
   },
 });

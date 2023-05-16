@@ -14,7 +14,7 @@ export default client;
 
 //-------------------End Points-------------------------\\
 
-export const My_Query = gql`
+export const GET_CHECKINS = gql`
   query MyQuery {
     check_in {
       id

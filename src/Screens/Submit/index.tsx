@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { ADD_CHECK_IN, My_Query } from '../../API/GraphQL';
-import { Container, Button, Spinner, Text, ScrollView } from 'native-base';
+import { ADD_CHECK_IN, GET_CHECKINS } from '../../API/GraphQL';
+import {Button, Spinner, Text, KeyboardAvoidingView } from 'native-base';
+import { Platform } from 'react-native';
 import Custom_TextInput from '../../Components/Custom_TextInput';
-import styles from './style';
 
 interface SubmitProps { }
 
@@ -20,7 +20,7 @@ const Submit: React.FC<SubmitProps> = () => {
   const imageUrlRef = useRef<any>();
 
   const [addCheckIn, { loading, error }] = useMutation(ADD_CHECK_IN);
-  const { refetch } = useQuery(My_Query);
+  const { refetch } = useQuery(GET_CHECKINS);
 
   const validateName = () => {
     if (!name) {
@@ -63,9 +63,9 @@ const Submit: React.FC<SubmitProps> = () => {
         const response = await addCheckIn({
           variables: {
             check_in: {
-              name: name,
-              comment: comment,
-              image_url: imageUrl,
+              name: name!,
+              comment: comment!,
+              image_url: imageUrl!,
             },
           },
         });
@@ -84,8 +84,13 @@ const Submit: React.FC<SubmitProps> = () => {
   };
 
   return (
-    <ScrollView>
-      <Container style={styles.MainViewStyle}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      flex={1}
+      px={5}
+      py={5}
+    >
+      <>
         <Custom_TextInput
           inputRef={nameRef}
           placeholder='Name'
@@ -119,20 +124,18 @@ const Submit: React.FC<SubmitProps> = () => {
           error={imageUrlError}
         />
         <Button
-          style={{
-            backgroundColor: '#543cdc',
-            width: '100%',
-            alignItems: 'center',
-            borderRadius: 10,
-            height: '20%',
-          }}
+          backgroundColor='#543cdc'
+          width='100%'
+          alignItems='center'
+          borderRadius={10}
+          padding={4}
           onPress={handleAddCheckIn}
           disabled={!!nameError || !!commentError || !!imageUrlError || loading}
         >
           {loading ? <Spinner color='#ffffff' size='small' /> : <Text color='white'>ADD</Text>}
         </Button>
-      </Container>
-    </ScrollView>
+      </>
+    </KeyboardAvoidingView>
   );
 };
 

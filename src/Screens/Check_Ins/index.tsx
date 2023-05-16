@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useQuery, useLazyQuery } from '@apollo/client';
 import { Box, Spinner } from 'native-base';
 import CardView from '../../Components/Custom_Card';
-import { My_Query } from '../../API/GraphQL';
+import { GET_CHECKINS } from '../../API/GraphQL';
 import HandleError from '../../Components/Handle_Error';
 
 interface Item {
@@ -15,10 +15,10 @@ interface Item {
 }
 
 export default function Check_Ins() {
-  const { loading, error, data, refetch } = useQuery(My_Query);
+  const { loading, error, data, refetch } = useQuery(GET_CHECKINS);
   const check_in: Item[] = data?.check_in || [];
 
-  const [fetchCheckIns, { loading: loadingLazy }] = useLazyQuery(My_Query);
+  const [fetchCheckIns, { loading: loadingLazy }] = useLazyQuery(GET_CHECKINS);
 
   useEffect(() => {
     fetchCheckIns();
@@ -40,11 +40,16 @@ export default function Check_Ins() {
     return <HandleError error={error} />;
   }
 
+  const sortedCheckIns = [...check_in].sort((a, b) => {
+    const dateA = new Date(a.created_at);
+    const dateB = new Date(b.created_at);
+    return dateB.getTime() - dateA.getTime();
+  });
   return (
     <FlatList
-      data={check_in}
+      data={sortedCheckIns}
       renderItem={({ item }) => <CardView item={item} />}
-      keyExtractor={item => item.id}
+      keyExtractor={(item) => item.id}
       refreshing={loading}
       onRefresh={handleRefresh}
     />
