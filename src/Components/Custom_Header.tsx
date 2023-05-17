@@ -5,7 +5,7 @@ const Custom_Header: React.FC = () => {
   return (
     <Box
       bg={"white"}
-      p={"5%"}
+      p={5}
       alignItems={"center"}
       justifyContent={"center"}
       safeAreaTop

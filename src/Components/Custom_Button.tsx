@@ -9,7 +9,7 @@ const Custom_Button: React.FC<CustomButtonProps> = ({ title }) => {
   return (
     <Box
       backgroundColor={"#543cdc"}
-      padding={"5%"}
+      padding={5}
       width={"100%"}
       alignItems={"center"}
       borderRadius={10}

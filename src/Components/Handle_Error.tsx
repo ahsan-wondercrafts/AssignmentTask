@@ -10,7 +10,7 @@ const HandleError: React.FC<HandleErrorProps> = ({ error }) => (
   flex={1}
   alignItems={'center'}
   justifyContent={'center'}
-  mx={'5%'}
+  mx={5}
   // style={styles.container}
   >
     <Text  color={'red.600'} fontSize={20} >{error?.message}</Text>

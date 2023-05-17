@@ -16,12 +16,15 @@ const CustomTextInput: ForwardRefRenderFunction<typeof Input, CustomTextInputPro
       <Input
         ref={inputRef || undefined}
         {...props}
-        py={'3%'}
+        paddingX={16}
+        paddingY={16}
         backgroundColor={'white'}
         color={'black'}
         inputMode='text'
+        borderRadius={8}
         placeholder={placeholder}
-        placeholderTextColor='#A7A7A7'
+        fontSize={16}
+        placeholderTextColor={'#A7A7A7'}
         autoCorrect={false}
       />
       {error ? <Text color={'red.600'} fontSize={11} py={1}>{error} </Text> : <Text></Text>}

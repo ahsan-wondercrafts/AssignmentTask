@@ -16,10 +16,10 @@ const CardView: React.FC<CardViewProps> = ({ item }) => {
   const formattedDate = moment(originalDate).format('Do [of] MMMM YYYY');
 
   return (
-    <Card flex={1} backgroundColor={'white'} marginX={'5%'} marginTop={'5%'} borderRadius={'md'}
+    <Card flex={1} backgroundColor={'white'} marginX={5} marginTop={5} borderRadius={'md'}
     >
       {item?.image_url && (
-        <Box alignItems={'center'} width={'100%'} height={160}
+        <Box alignItems={'center'} width={'100%'} height={200}
         >
           <Image source={{ uri: item?.image_url }}
             flex={1}
@@ -32,33 +32,40 @@ const CardView: React.FC<CardViewProps> = ({ item }) => {
       )}
       <Box
         flexDirection={'row'}
-        marginTop={'4%'}
+        marginTop={3}
       >
         <Box
           backgroundColor={'lightgrey'}
-          padding={2}
+          width={43}
+          height={43}
           borderRadius={8}
-          marginRight={'2%'}
+          alignItems={'center'}
+          justifyContent={'center'}
         >
 
           <Image
             source={require('../../assets/Images/users.png')}
-            width={6}
-            height={6}
+            width={28}
+            height={16}
             tintColor={'white'}
             resizeMode="contain"
           />
         </Box>
-        <Box flex={1} justifyContent={'space-between'}>
-          <Text color={"black"} fontSize={14}>{item?.name || 'Vito Margiotta'}</Text>
-          <Text color={"black"} fontSize={14}>{formattedDate}</Text>
+
+        <Box flex={1} marginLeft={2} justifyContent={'flex-start'} >
+          <Text color={"black"} fontSize={16}>{item?.name || 'Vito Margiotta'}</Text>
+          <Text color={"#4027DF"} fontSize={16}>{formattedDate}</Text>
         </Box>
+
       </Box>
+
+
+
       <Box
-        marginTop={'4%'}
+        marginTop={4}
       >
         {item?.comment ? (
-          <Text color={"black"} fontSize={14} numberOfLines={3}>
+          <Text color={"black"} fontSize={16} numberOfLines={3}>
             {item?.comment}
           </Text>
         ) : (

@@ -127,12 +127,12 @@ const Submit: React.FC<SubmitProps> = () => {
           backgroundColor='#543cdc'
           width='100%'
           alignItems='center'
-          borderRadius={10}
-          padding={4}
+          borderRadius={8}
+          paddingY={14}
           onPress={handleAddCheckIn}
           disabled={!!nameError || !!commentError || !!imageUrlError || loading}
         >
-          {loading ? <Spinner color='#ffffff' size='small' /> : <Text color='white'>ADD</Text>}
+          {loading ? <Spinner color={'#ffffff'} size={'small'} /> : <Text color={'white'} fontSize={22}>ADD</Text>}
         </Button>
       </>
     </KeyboardAvoidingView>

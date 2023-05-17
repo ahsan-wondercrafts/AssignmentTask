@@ -64,7 +64,7 @@ const MyTabBar: React.FC<MyTabBarProps> = ({ state, descriptors, navigation, pos
             backgroundColor={isFocused ? 'white' : 'white'}
             alignItems={'center'}
             justifyContent={'center'}
-            padding={'3%'}
+            padding={3}
             borderBottomWidth={isFocused ? 1 : 0}
             borderBottomColor={isFocused ? 'black' : 'white'}
           >
