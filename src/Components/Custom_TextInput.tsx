@@ -1,4 +1,3 @@
-import { StyleSheet } from 'react-native';
 import React, { forwardRef, ForwardRefRenderFunction, Ref } from 'react';
 import { Input, IInputProps, Text } from 'native-base';
 
@@ -17,23 +16,17 @@ const CustomTextInput: ForwardRefRenderFunction<typeof Input, CustomTextInputPro
       <Input
         ref={inputRef || undefined}
         {...props}
-        style={[styles.textinput, props.style]}
+        py={'3%'}
+        backgroundColor={'white'}
+        color={'black'}
         inputMode='text'
         placeholder={placeholder}
         placeholderTextColor='#A7A7A7'
         autoCorrect={false}
       />
-      {error ? <Text color={'red.600'} fontSize={11} py={1}>{error} </Text>: <Text></Text>}
+      {error ? <Text color={'red.600'} fontSize={11} py={1}>{error} </Text> : <Text></Text>}
     </>
   );
 };
 
 export default forwardRef<typeof Input, CustomTextInputProps>(CustomTextInput);
-
-const styles = StyleSheet.create({
-  textinput: {
-    flex:1,
-    backgroundColor: 'white',
-    color: '#000',
-  },
-});

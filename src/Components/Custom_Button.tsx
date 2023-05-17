@@ -8,13 +8,13 @@ interface CustomButtonProps {
 const Custom_Button: React.FC<CustomButtonProps> = ({ title }) => {
   return (
     <Box
-      backgroundColor="#543cdc"
-      padding="5%"
-      width="100%"
-      alignItems="center"
+      backgroundColor={"#543cdc"}
+      padding={"5%"}
+      width={"100%"}
+      alignItems={"center"}
       borderRadius={10}
     >
-      <Text color="white">{title}</Text>
+      <Text color={"white"}>{title}</Text>
     </Box>
   );
 };

@@ -1,7 +1,6 @@
-import { FlatList } from 'react-native';
 import React, { useEffect } from 'react';
 import { useQuery, useLazyQuery } from '@apollo/client';
-import { Box, Spinner } from 'native-base';
+import { Box, Spinner, FlatList } from 'native-base';
 import CardView from '../../Components/Custom_Card';
 import { GET_CHECKINS } from '../../API/GraphQL';
 import HandleError from '../../Components/Handle_Error';
